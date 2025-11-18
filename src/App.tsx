@@ -8,6 +8,7 @@ import LocationSection from './components/LocationSection';
 import DeveloperSection from './components/DeveloperSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import EnquiryModal from './components/EnquiryModal'; 
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <ContactSection />
       </main>
       <Footer />
+      <EnquiryModal />
     </div>
   );
 }

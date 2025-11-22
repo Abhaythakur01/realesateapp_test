@@ -3,9 +3,9 @@ import { Building2 } from 'lucide-react';
 export default function Footer() {
   // Static settings - you can replace this with props or context
   const settings = {
-    site_title: 'LUXURY RESIDENCES',
+    site_title: 'SAI SIDDHI',
     rera_disclaimer: 'This project is registered under RERA. Registration No: P51234567890. All specifications, plans, and designs are subject to change as may be decided by the competent authority and/or the developer. Computer-generated images are the artist\'s impression and are indicative in nature. The Developer/Owner reserves the right to make additions/deletions/alterations as may be necessary.',
-    footer_text: `© ${new Date().getFullYear()} Luxury Residences. All rights reserved.`
+    footer_text: `© ${new Date().getFullYear()} SAI SIDDHI. All rights reserved.`
   };
 
   const currentYear = new Date().getFullYear();
@@ -36,7 +36,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Building2 className="text-amber-500" size={32} />
               <h3 className="text-2xl font-bold text-white">
-                {settings?.site_title || 'Luxury Residences'}
+                {settings?.site_title || 'SAI SIDDHI'}
               </h3>
             </div>
             <p className="text-gray-400 leading-relaxed mb-6">

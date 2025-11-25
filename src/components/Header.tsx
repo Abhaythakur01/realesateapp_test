@@ -7,7 +7,7 @@ export default function Header() {
 
   // Static settings - you can replace this with props or context
   const settings = {
-    site_title: 'LUXURY RESIDENCES',
+    site_title: 'SAI SIDDHI',
     brochure_pdf_url: '/brochure.pdf' // Update with your actual PDF URL
   };
 
@@ -51,7 +51,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0">
             <a href="#hero" className="text-2xl font-bold text-amber-500 tracking-wider">
-              {settings?.site_title || 'LUXURY RESIDENCES'}
+              {settings?.site_title || 'SAI SIDDHI'}
             </a>
           </div>
 

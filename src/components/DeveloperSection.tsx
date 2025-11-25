@@ -57,18 +57,6 @@ export default function DeveloperSection() {
                     <p className="text-gray-300 text-sm">Projects Delivered</p>
                   </div>
                 </div>
-
-                {developer.website_url && (
-                  <a
-                    href={developer.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors duration-200"
-                  >
-                    Visit Website
-                    <ExternalLink size={18} />
-                  </a>
-                )}
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { MapPin, Navigation } from 'lucide-react';
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 export default function LocationSection() {
   // Static location data - you can replace this with props or context
@@ -21,10 +22,18 @@ export default function LocationSection() {
     ]
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const contentBox = useScrollAnimation({ animation: 'slideInLeft' });
+  const map = useScrollAnimation({ animation: 'slideInRight' });
+  const landmarks = useStaggerAnimation(location.nearby_places.length, { animation: 'slideInLeft' });
+
   return (
     <section id="location" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Prime <span className="text-amber-600">Location</span>
           </h2>
@@ -36,7 +45,10 @@ export default function LocationSection() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="bg-gradient-to-br from-amber-50 to-white p-8 rounded-2xl border border-amber-200">
+            <div
+              ref={contentBox.ref}
+              className={`bg-gradient-to-br from-amber-50 to-white p-8 rounded-2xl border border-amber-200 ${contentBox.className}`}
+            >
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-amber-600 rounded-lg flex-shrink-0">
                   <MapPin className="text-white" size={28} />
@@ -56,11 +68,11 @@ export default function LocationSection() {
                 <Navigation className="text-amber-600" size={28} />
                 Nearby Landmarks
               </h3>
-              <div className="space-y-4">
+              <div ref={landmarks.ref} className="space-y-4">
                 {location.nearby_places.map((place, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200 border border-gray-200"
+                    className={`flex items-center justify-between p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-200 border border-gray-200 ${landmarks.getItemClassName(index)}`}
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
@@ -73,7 +85,10 @@ export default function LocationSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden shadow-2xl h-[600px] border-4 border-gray-200">
+          <div
+            ref={map.ref}
+            className={`rounded-2xl overflow-hidden shadow-2xl h-[600px] border-4 border-gray-200 ${map.className}`}
+          >
             {location.google_maps_embed_url ? (
               <iframe
                 src={location.google_maps_embed_url}

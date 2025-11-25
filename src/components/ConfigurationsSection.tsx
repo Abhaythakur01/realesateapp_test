@@ -1,4 +1,5 @@
 import { Download, Maximize2, IndianRupee } from 'lucide-react';
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 export default function ConfigurationsSection() {
   // Static configurations data - you can replace this with props or context
@@ -60,10 +61,16 @@ export default function ConfigurationsSection() {
     return `${(price / 100000).toFixed(2)} Lac`;
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const cards = useStaggerAnimation(configurations.length, { animation: 'slideInUp' });
+
   return (
     <section id="floor-plans" className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Floor <span className="text-amber-600">Plans</span>
           </h2>
@@ -73,11 +80,11 @@ export default function ConfigurationsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {configurations.map((config) => (
+        <div ref={cards.ref} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {configurations.map((config, index) => (
             <div
               key={config.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200"
+              className={`group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 ${cards.getItemClassName(index)}`}
             >
               <div className="relative overflow-hidden h-64">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10" />

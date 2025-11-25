@@ -1,4 +1,5 @@
 import { Award, Building, Calendar, ExternalLink } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function DeveloperSection() {
   // Static developer info - you can replace this with props or context
@@ -11,10 +12,17 @@ export default function DeveloperSection() {
     website_url: 'https://www.premiumbuilders.com'
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const left = useScrollAnimation({ animation: 'slideInLeft' });
+  const right = useScrollAnimation({ animation: 'slideInRight' });
+
   return (
     <section id="developer" className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             About The <span className="text-amber-600">Developer</span>
           </h2>
@@ -22,7 +30,10 @@ export default function DeveloperSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
+          <div
+            ref={left.ref}
+            className={`relative ${left.className}`}
+          >
             <div className="absolute -inset-4 bg-gradient-to-r from-amber-600 to-amber-400 rounded-2xl opacity-10 blur-xl"></div>
             <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-12 shadow-2xl">
               <div className="text-center space-y-8">
@@ -57,23 +68,14 @@ export default function DeveloperSection() {
                     <p className="text-gray-300 text-sm">Projects Delivered</p>
                   </div>
                 </div>
-
-                {developer.website_url && (
-                  <a
-                    href={developer.website_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors duration-200"
-                  >
-                    Visit Website
-                    <ExternalLink size={18} />
-                  </a>
-                )}
               </div>
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div
+            ref={right.ref}
+            className={`space-y-6 ${right.className}`}
+          >
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-gray-700 leading-relaxed">
                 {developer.description}

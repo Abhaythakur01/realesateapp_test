@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import EnquiryForm from './EnquiryForm';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function ContactSection() {
   // Static contact info - you can replace this with props or context
@@ -17,10 +18,17 @@ export default function ContactSection() {
     }
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const left = useScrollAnimation({ animation: 'slideInLeft' });
+  const right = useScrollAnimation({ animation: 'slideInRight' });
+
   return (
     <section id="contact" className="py-24 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Get In <span className="text-amber-600">Touch</span>
           </h2>
@@ -32,7 +40,10 @@ export default function ContactSection() {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div
+              ref={left.ref}
+              className={`bg-white p-8 rounded-2xl shadow-lg border border-gray-200 ${left.className}`}
+            >
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h3>
 
               <div className="space-y-6">
@@ -162,7 +173,10 @@ export default function ContactSection() {
             </div>
           </div>
 
-          <div className="bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-200">
+          <div
+            ref={right.ref}
+            className={`bg-white p-8 lg:p-10 rounded-2xl shadow-lg border border-gray-200 ${right.className}`}
+          >
             <h3 className="text-2xl font-bold text-slate-900 mb-6">Send Us A Message</h3>
             <EnquiryForm source="contact" />
           </div>

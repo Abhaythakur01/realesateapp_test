@@ -1,4 +1,5 @@
 import * as Icons from 'lucide-react';
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 export default function AmenitiesSection() {
   // Static amenities data - you can replace this with props or context
@@ -106,10 +107,16 @@ export default function AmenitiesSection() {
     return Icon ? <Icon size={32} /> : <Icons.Circle size={32} />;
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const grid = useStaggerAnimation(amenities.length, { animation: 'scaleIn' });
+
   return (
     <section id="amenities" className="py-16 md:py-24 bg-white w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             World-Class <span className="text-amber-600">Amenities</span>
           </h2>
@@ -120,14 +127,11 @@ export default function AmenitiesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
+        <div ref={grid.ref} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
           {amenities.map((amenity, index) => (
             <div
               key={amenity.id}
-              className="group bg-gradient-to-br from-gray-50 to-white p-4 md:p-5 lg:p-6 rounded-xl md:rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              style={{
-                animationDelay: `${index * 50}ms`,
-              }}
+              className={`group bg-gradient-to-br from-gray-50 to-white p-4 md:p-5 lg:p-6 rounded-xl md:rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${grid.getItemClassName(index)}`}
             >
               <div className="flex flex-col items-center text-center space-y-3 md:space-y-4">
                 <div className="p-3 md:p-4 bg-gradient-to-br from-amber-100 to-amber-50 rounded-lg md:rounded-xl group-hover:from-amber-600 group-hover:to-amber-500 transition-all duration-300">

@@ -4,7 +4,7 @@ import EnquiryForm from './EnquiryForm';
 export default function HeroSection() {
   // Static hero data - you can replace this with props or context
   const hero = {
-    title: 'LUXURY RESIDENCES',
+    title: 'SAI SIDDHI',
     tagline: 'Experience the epitome of luxury living in the heart of the city',
     background_image_url: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1600',
     rera_number: 'P51234567890',
@@ -18,7 +18,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/70 z-10" />
         <img
           src={hero.background_image_url || ''}
-          alt="Luxury Residence"
+          alt="SAI SIDDHI"
           className="w-full h-full object-cover"
         />
       </div>

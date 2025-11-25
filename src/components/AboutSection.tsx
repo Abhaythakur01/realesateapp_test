@@ -1,4 +1,5 @@
 import { Building2, MapPin, Check } from 'lucide-react';
+import { useScrollAnimation, useStaggerAnimation } from '../hooks/useScrollAnimation';
 
 export default function AboutSection() {
   // Static project info - you can replace this with props or context
@@ -19,10 +20,18 @@ export default function AboutSection() {
     ]
   };
 
+  const title = useScrollAnimation({ animation: 'slideInDown' });
+  const content = useScrollAnimation({ animation: 'slideInLeft' });
+  const image = useScrollAnimation({ animation: 'slideInRight' });
+  const highlights = useStaggerAnimation(projectInfo.highlights.length, { animation: 'slideInUp' });
+
   return (
     <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center mb-16">
+        <div
+          ref={title.ref}
+          className={`text-center mb-16 ${title.className}`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             About The <span className="text-amber-600">Project</span>
           </h2>
@@ -30,7 +39,10 @@ export default function AboutSection() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
+          <div
+            ref={content.ref}
+            className={`space-y-6 ${content.className}`}
+          >
             <p className="text-lg text-gray-700 leading-relaxed">
               {projectInfo.description}
             </p>
@@ -66,7 +78,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          <div className="relative">
+          <div ref={image.ref} className={`relative ${image.className}`}>
             <div className="absolute -inset-4 bg-gradient-to-r from-amber-600 to-amber-400 rounded-2xl opacity-10 blur-xl"></div>
             <img
               src="https://images.pexels.com/photos/2462015/pexels-photo-2462015.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -80,11 +92,11 @@ export default function AboutSection() {
           <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 md:mb-8 text-center">
             Project Highlights
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div ref={highlights.ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projectInfo.highlights.map((highlight, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 bg-white/5 backdrop-blur-sm p-4 md:p-5 rounded-xl hover:bg-white/10 transition-all duration-200"
+                className={`flex items-start gap-3 bg-white/5 backdrop-blur-sm p-4 md:p-5 rounded-xl hover:bg-white/10 transition-all duration-200 ${highlights.getItemClassName(index)}`}
               >
                 <div className="flex-shrink-0 mt-1">
                   <div className="p-1 bg-amber-500 rounded-full">

@@ -107,8 +107,8 @@ export default function AmenitiesSection() {
   };
 
   return (
-    <section id="amenities" className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="amenities" className="py-16 md:py-24 bg-white w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             World-Class <span className="text-amber-600">Amenities</span>
@@ -120,27 +120,27 @@ export default function AmenitiesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
           {amenities.map((amenity, index) => (
             <div
               key={amenity.id}
-              className="group bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="group bg-gradient-to-br from-gray-50 to-white p-4 md:p-5 lg:p-6 rounded-xl md:rounded-2xl border border-gray-200 hover:border-amber-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               style={{
                 animationDelay: `${index * 50}ms`,
               }}
             >
-              <div className="flex flex-col items-center text-center space-y-4">
-                <div className="p-4 bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl group-hover:from-amber-600 group-hover:to-amber-500 transition-all duration-300">
+              <div className="flex flex-col items-center text-center space-y-3 md:space-y-4">
+                <div className="p-3 md:p-4 bg-gradient-to-br from-amber-100 to-amber-50 rounded-lg md:rounded-xl group-hover:from-amber-600 group-hover:to-amber-500 transition-all duration-300">
                   <div className="text-amber-600 group-hover:text-white transition-colors duration-300">
                     {getIcon(amenity.icon_name)}
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-900 text-base mb-1">
+                  <h3 className="font-semibold text-slate-900 text-sm md:text-base mb-1">
                     {amenity.name}
                   </h3>
                   {amenity.description && (
-                    <p className="text-sm text-gray-600">{amenity.description}</p>
+                    <p className="text-xs md:text-sm text-gray-600">{amenity.description}</p>
                   )}
                 </div>
               </div>

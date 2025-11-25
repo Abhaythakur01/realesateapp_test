@@ -13,7 +13,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/50 to-slate-900/70 z-10" />
         <img
@@ -23,7 +23,7 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 w-full grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div className="text-white space-y-8">
           <div className="space-y-4">
             <div className="inline-block px-4 py-2 bg-amber-600/20 border border-amber-500/30 rounded-full backdrop-blur-sm">
@@ -32,7 +32,7 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
               <span className="block text-amber-500 mb-2">{hero.title}</span>
             </h1>
 

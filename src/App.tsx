@@ -8,13 +8,15 @@ import LocationSection from './components/LocationSection';
 import DeveloperSection from './components/DeveloperSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
-import EnquiryModal from './components/EnquiryModal'; 
+import EnquiryModal from './components/EnquiryModal';
+import StickyBrochureButton from './components/StickyBrochureButton';
+import StickyBottomCTA from './components/StickyBottomCTA'; 
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden w-full">
       <Header />
-      <main>
+      <main className="w-full overflow-x-hidden pb-16 lg:pb-0">
         <HeroSection />
         <AboutSection />
         <AmenitiesSection />
@@ -26,6 +28,8 @@ function App() {
       </main>
       <Footer />
       <EnquiryModal />
+      <StickyBrochureButton />
+      <StickyBottomCTA />
     </div>
   );
 }

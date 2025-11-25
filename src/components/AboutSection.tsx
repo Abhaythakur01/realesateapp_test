@@ -20,8 +20,8 @@ export default function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50 w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             About The <span className="text-amber-600">Project</span>
@@ -76,22 +76,22 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl md:rounded-2xl p-6 md:p-8 lg:p-12 shadow-2xl w-full">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 md:mb-8 text-center">
             Project Highlights
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {projectInfo.highlights.map((highlight, index) => (
               <div
                 key={index}
-                className="flex items-start gap-3 bg-white/5 backdrop-blur-sm p-5 rounded-xl hover:bg-white/10 transition-all duration-200"
+                className="flex items-start gap-3 bg-white/5 backdrop-blur-sm p-4 md:p-5 rounded-xl hover:bg-white/10 transition-all duration-200"
               >
                 <div className="flex-shrink-0 mt-1">
                   <div className="p-1 bg-amber-500 rounded-full">
                     <Check size={16} className="text-white" />
                   </div>
                 </div>
-                <p className="text-white font-medium leading-relaxed">{highlight}</p>
+                <p className="text-white text-sm md:text-base font-medium leading-relaxed">{highlight}</p>
               </div>
             ))}
           </div>
